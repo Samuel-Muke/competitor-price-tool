@@ -1,0 +1,310 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h2 class="h4 fw-bold text-dark">
+        <i class="fas fa-tachometer-alt me-2"></i>Price Intelligence Dashboard
+    </h2>
+    <div class="dropdown">
+        <button class="btn btn-outline-primary dropdown-toggle" type="button" data-bs-toggle="dropdown">
+            <i class="fas fa-bolt me-1"></i>Quick Actions
+        </button>
+        <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="{{ url_for('properties.create_property') }}">
+                <i class="fas fa-plus me-2"></i>Add Property
+            </a></li>
+            {% if selected_property %}
+            <li><a class="dropdown-item" href="{{ url_for('dashboard.run_scrape', property_id=selected_property.id) }}">
+                <i class="fas fa-download me-2"></i>Scrape Prices
+            </a></li>
+            <li><a class="dropdown-item" href="{{ url_for('dashboard.run_forecast', property_id=selected_property.id) }}">
+                <i class="fas fa-chart-line me-2"></i>Generate Forecast
+            </a></li>
+            {% endif %}
+        </ul>
+    </div>
+</div>
+
+<!-- Property Selector -->
+<div class="card">
+    <div class="card-body">
+        <label class="form-label fw-semibold">
+            <i class="fas fa-building me-1"></i>Select Property
+        </label>
+        <select class="form-select" onchange="window.location.href='?property='+this.value">
+            {% for property in properties %}
+            <option value="{{ property.id }}" {% if selected_property.id == property.id %}selected{% endif %}>
+                {{ property.name }} - {{ property.location }} (KES {{ "%.2f"|format(property.base_price) }})
+            </option>
+            {% endfor %}
+        </select>
+    </div>
+</div>
+
+{% if selected_property %}
+<!-- Key Metrics -->
+<div class="row">
+    <div class="col-md-3">
+        <div class="card text-white bg-primary metric-card">
+            <div class="card-body">
+                <div class="d-flex justify-content-between">
+                    <div>
+                        <h6 class="card-title">Competitors Tracked</h6>
+                        <h3 class="mb-0">{{ metrics.competitors_tracked or 0 }}</h3>
+                    </div>
+                    <div class="align-self-center">
+                        <i class="fas fa-store fa-2x opacity-50"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card text-white bg-success metric-card">
+            <div class="card-body">
+                <div class="d-flex justify-content-between">
+                    <div>
+                        <h6 class="card-title">Price Entries</h6>
+                        <h3 class="mb-0">{{ metrics.total_entries or 0 }}</h3>
+                    </div>
+                    <div class="align-self-center">
+                        <i class="fas fa-database fa-2x opacity-50"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card text-white bg-info metric-card">
+            <div class="card-body">
+                <div class="d-flex justify-content-between">
+                    <div>
+                        <h6 class="card-title">Price Difference</h6>
+                        <h3 class="mb-0">
+                            {% if metrics.price_difference %}
+                            KES {{ "%.2f"|format(metrics.price_difference) }}
+                            {% else %}--{% endif %}
+                        </h3>
+                    </div>
+                    <div class="align-self-center">
+                        <i class="fas fa-balance-scale fa-2x opacity-50"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card text-white bg-warning metric-card">
+            <div class="card-body">
+                <div class="d-flex justify-content-between">
+                    <div>
+                        <h6 class="card-title">Base Price</h6>
+                        <h3 class="mb-0">KES {{ "%.2f"|format(selected_property.base_price) }}</h3>
+                    </div>
+                    <div class="align-self-center">
+                        <i class="fas fa-tag fa-2x opacity-50"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <!-- Price Chart -->
+    <div class="col-lg-8">
+        <div class="card">
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <h5 class="card-title mb-0">
+                    <i class="fas fa-chart-line me-2"></i>Price Trends & Forecast
+                </h5>
+                <div>
+                    <button class="btn btn-sm btn-outline-secondary" onclick="refreshChart()">
+                        <i class="fas fa-refresh me-1"></i>Refresh
+                    </button>
+                </div>
+            </div>
+            <div class="card-body">
+                <canvas id="priceChart" height="250"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <!-- Quick Actions & Reports -->
+    <div class="col-lg-4">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="card-title mb-0">
+                    <i class="fas fa-rocket me-2"></i>Reports & Actions
+                </h5>
+            </div>
+            <div class="card-body">
+                <div class="d-grid gap-2">
+                    <a href="{{ url_for('dashboard.run_scrape', property_id=selected_property.id) }}" 
+                      class="btn btn-outline-primary">
+                        <i class="fas fa-download me-2"></i>Scrape Latest Prices
+                    </a>
+                    <a href="{{ url_for('dashboard.run_forecast', property_id=selected_property.id) }}" 
+                      class="btn btn-outline-success">
+                        <i class="fas fa-chart-line me-2"></i>Generate Forecast
+                    </a>
+                    
+                    <!-- Report Generation -->
+                    <div class="dropdown">
+                        <button class="btn btn-outline-info dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                            <i class="fas fa-file-alt me-2"></i>Generate Report
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#" onclick="generateReport('csv')">
+                                <i class="fas fa-file-csv me-2"></i>CSV Report
+                            </a></li>
+                            <li><a class="dropdown-item" href="#" onclick="generateReport('pdf')">
+                                <i class="fas fa-file-pdf me-2"></i>PDF Report
+                            </a></li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Recent Activity -->
+                <div class="mt-4">
+                    <h6><i class="fas fa-clock me-2"></i>Recent Price Entries</h6>
+                    {% if recent_entries %}
+                    <div class="list-group list-group-flush">
+                        {% for entry in recent_entries %}
+                        <div class="list-group-item d-flex justify-content-between align-items-center px-0">
+                            <div>
+                                <small class="fw-semibold">{{ entry.competitor_name }}</small>
+                                <br>
+                                <small class="text-muted">{{ entry.date.strftime('%m/%d/%Y') }}</small>
+                            </div>
+                            <span class="badge bg-primary rounded-pill">KES {{ "%.2f"|format(entry.price) }}</span>
+                        </div>
+                        {% endfor %}
+                    </div>
+                    {% else %}
+                    <p class="text-muted small">
+                        <i class="fas fa-info-circle me-1"></i>No recent price entries
+                    </p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Forecast Section -->
+{% if forecasts %}
+<div class="card">
+    <div class="card-header">
+        <h5 class="card-title mb-0">
+            <i class="fas fa-crystal-ball me-2"></i>7-Day Price Forecast
+        </h5>
+    </div>
+    <div class="card-body">
+        <div class="row">
+            {% for forecast in forecasts %}
+            <div class="col-md-2 col-6 mb-3">
+                <div class="card bg-light text-center">
+                    <div class="card-body p-3">
+                        <small class="d-block text-muted fw-semibold">{{ forecast.date.strftime('%a') }}</small>
+                        <small class="d-block text-muted mb-2">{{ forecast.date.strftime('%m/%d') }}</small>
+                        <strong class="text-primary h5">KES {{ "%.2f"|format(forecast.predicted_price) }}</strong>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endif %}
+
+{% else %}
+<!-- Empty State -->
+<div class="card text-center py-5">
+    <div class="card-body">
+        <i class="fas fa-building fa-3x text-muted mb-3"></i>
+        <h4 class="text-muted">No Properties Found</h4>
+        <p class="text-muted">Get started by adding your first property to track competitor prices.</p>
+        <a href="{{ url_for('properties.create_property') }}" class="btn btn-primary">
+            <i class="fas fa-plus me-2"></i>Add Your First Property
+        </a>
+    </div>
+</div>
+{% endif %}
+
+<script>
+function generateReport(format) {
+    const propertyId = {{ selected_property.id if selected_property else 'null' }};
+    if (!propertyId) {
+        alert('Please select a property first');
+        return;
+    }
+    
+    if (format === 'csv') {
+        window.location.href = `/dashboard/report/csv/${propertyId}`;
+    } else {
+        window.location.href = `/dashboard/report/pdf/${propertyId}`;
+    }
+}
+
+function refreshChart() {
+    // Chart refresh logic would go here
+    location.reload();
+}
+
+// Initialize chart
+document.addEventListener('DOMContentLoaded', function() {
+    const ctx = document.getElementById('priceChart').getContext('2d');
+    const chartData = {{ chart_data | tojson }};
+    
+    if (chartData.length > 0) {
+        const dates = chartData.map(d => d.date);
+        const basePrices = chartData.map(d => d.base_price);
+        const avgCompetitors = chartData.map(d => d.avg_competitor);
+        
+        new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: dates,
+                datasets: [
+                    {
+                        label: 'Your Base Price',
+                        data: basePrices,
+                        borderColor: '#2c5aa0',
+                        backgroundColor: 'rgba(44, 90, 160, 0.1)',
+                        borderWidth: 2,
+                        fill: true
+                    },
+                    {
+                        label: 'Avg Competitor Price',
+                        data: avgCompetitors,
+                        borderColor: '#dc3545',
+                        backgroundColor: 'rgba(220, 53, 69, 0.1)',
+                        borderWidth: 2,
+                        fill: true
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Price Comparison Over Time'
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: false,
+                        title: {
+                            display: true,
+                            text: 'Price (KES)'
+                        }
+                    }
+                }
+            }
+        });
+    }
+});
+</script>
+{% endblock %}

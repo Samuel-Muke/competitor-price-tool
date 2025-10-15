@@ -1,0 +1,208 @@
+type,date,price,competitor,availability
+forecast,2025-10-15,113.09,model_prediction,forecast
+forecast,2025-10-16,114.04,model_prediction,forecast
+forecast,2025-10-17,114.99,model_prediction,forecast
+forecast,2025-10-18,115.94,model_prediction,forecast
+forecast,2025-10-19,116.89,model_prediction,forecast
+forecast,2025-10-20,117.84,model_prediction,forecast
+forecast,2025-10-21,118.79,model_prediction,forecast
+historical,2025-08-26,282.3,Metropolitan Living,Available
+historical,2025-08-26,234.11,City View Apartments,Last Unit
+historical,2025-08-26,203.95,Uptown Apartments,Limited
+historical,2025-08-26,288.05,Garden District Properties,Last Unit
+historical,2025-08-27,187.13,Urban Living Co,Limited
+historical,2025-08-27,318.17,Metropolitan Living,Available
+historical,2025-08-27,232.67,City View Apartments,Good Availability
+historical,2025-08-27,145.45,Elite Properties,Limited
+historical,2025-08-28,222.1,Parkside Residences,Available
+historical,2025-08-28,128.79,Uptown Apartments,Last Unit
+historical,2025-08-28,130.82,Premium Rentals,Limited
+historical,2025-08-28,283.55,Downtown Suites,Good Availability
+historical,2025-08-29,266.39,Riverside Condos,Limited
+historical,2025-08-29,231.16,Downtown Suites,Good Availability
+historical,2025-08-29,213.04,Garden District Properties,Good Availability
+historical,2025-08-29,279.17,Uptown Apartments,Last Unit
+historical,2025-08-30,325.5,Urban Living Co,Last Unit
+historical,2025-08-30,153.4,Harbor View Homes,Last Unit
+historical,2025-08-30,258.0,Metro Homes,Limited
+historical,2025-08-30,291.39,LuxuryStays Inc,Limited
+historical,2025-08-31,249.11,Metropolitan Living,Limited
+historical,2025-08-31,276.09,Urban Living Co,Available
+historical,2025-08-31,293.22,Downtown Suites,Good Availability
+historical,2025-08-31,138.99,Uptown Apartments,Last Unit
+historical,2025-09-01,248.18,Urban Living Co,Good Availability
+historical,2025-09-01,221.06,Skyline Rentals,Limited
+historical,2025-09-01,220.69,Parkside Residences,Last Unit
+historical,2025-09-01,190.53,City View Apartments,Good Availability
+historical,2025-09-02,268.08,City View Apartments,Available
+historical,2025-09-02,177.35,Uptown Apartments,Good Availability
+historical,2025-09-02,194.58,Metropolitan Living,Available
+historical,2025-09-02,178.35,Downtown Suites,Limited
+historical,2025-09-03,277.34,Metropolitan Living,Last Unit
+historical,2025-09-03,129.8,LuxuryStays Inc,Good Availability
+historical,2025-09-03,154.99,Harbor View Homes,Available
+historical,2025-09-03,288.76,City View Apartments,Good Availability
+historical,2025-09-04,313.12,Metropolitan Living,Limited
+historical,2025-09-04,285.48,Uptown Apartments,Good Availability
+historical,2025-09-04,291.08,Skyline Rentals,Available
+historical,2025-09-04,264.85,Riverside Condos,Good Availability
+historical,2025-09-05,285.2,Riverside Condos,Limited
+historical,2025-09-05,152.55,Elite Properties,Limited
+historical,2025-09-05,147.08,LuxuryStays Inc,Limited
+historical,2025-09-05,223.49,Premium Rentals,Last Unit
+historical,2025-09-06,128.72,City View Apartments,Limited
+historical,2025-09-06,204.94,Parkside Residences,Last Unit
+historical,2025-09-06,215.85,Garden District Properties,Last Unit
+historical,2025-09-06,194.73,Premium Rentals,Good Availability
+historical,2025-09-07,161.92,Garden District Properties,Limited
+historical,2025-09-07,225.33,Riverside Condos,Last Unit
+historical,2025-09-07,168.23,City View Apartments,Limited
+historical,2025-09-07,211.19,Downtown Suites,Available
+historical,2025-09-08,137.77,Skyline Rentals,Available
+historical,2025-09-08,135.41,Garden District Properties,Good Availability
+historical,2025-09-08,139.28,Harbor View Homes,Available
+historical,2025-09-08,220.54,Metropolitan Living,Limited
+historical,2025-09-09,213.45,Metropolitan Living,Last Unit
+historical,2025-09-09,181.4,Parkside Residences,Available
+historical,2025-09-09,165.81,Harbor View Homes,Last Unit
+historical,2025-09-09,228.8,Elite Properties,Available
+historical,2025-09-10,238.13,LuxuryStays Inc,Limited
+historical,2025-09-10,277.63,Riverside Condos,Good Availability
+historical,2025-09-10,157.07,Garden District Properties,Last Unit
+historical,2025-09-10,252.08,Elite Properties,Available
+historical,2025-09-11,237.12,Urban Living Co,Available
+historical,2025-09-11,249.74,City View Apartments,Last Unit
+historical,2025-09-11,287.24,Metro Homes,Good Availability
+historical,2025-09-11,285.87,Premium Rentals,Available
+historical,2025-09-12,267.41,Elite Properties,Last Unit
+historical,2025-09-12,289.43,Premium Rentals,Limited
+historical,2025-09-12,257.57,Parkside Residences,Last Unit
+historical,2025-09-12,242.16,Metropolitan Living,Good Availability
+historical,2025-09-13,161.9,Uptown Apartments,Available
+historical,2025-09-13,196.65,Elite Properties,Last Unit
+historical,2025-09-13,269.52,City View Apartments,Last Unit
+historical,2025-09-13,265.21,Skyline Rentals,Good Availability
+historical,2025-09-14,286.11,Harbor View Homes,Available
+historical,2025-09-14,268.99,Metropolitan Living,Last Unit
+historical,2025-09-14,281.45,LuxuryStays Inc,Good Availability
+historical,2025-09-14,128.73,Uptown Apartments,Good Availability
+historical,2025-09-15,201.25,Urban Living Co,Limited
+historical,2025-09-15,130.5,Downtown Suites,Limited
+historical,2025-09-15,309.99,Uptown Apartments,Limited
+historical,2025-09-15,162.41,City View Apartments,Good Availability
+historical,2025-09-16,275.74,City View Apartments,Available
+historical,2025-09-16,196.15,Urban Living Co,Last Unit
+historical,2025-09-16,243.18,Elite Properties,Last Unit
+historical,2025-09-16,202.67,Parkside Residences,Limited
+historical,2025-09-17,186.32,Premium Rentals,Last Unit
+historical,2025-09-17,159.08,Metro Homes,Limited
+historical,2025-09-17,212.05,Riverside Condos,Last Unit
+historical,2025-09-17,173.37,Elite Properties,Limited
+historical,2025-09-18,283.14,Skyline Rentals,Last Unit
+historical,2025-09-18,162.28,Metropolitan Living,Available
+historical,2025-09-18,259.36,City View Apartments,Good Availability
+historical,2025-09-18,170.34,Parkside Residences,Limited
+historical,2025-09-19,179.03,Riverside Condos,Good Availability
+historical,2025-09-19,270.75,City View Apartments,Good Availability
+historical,2025-09-19,141.06,Uptown Apartments,Good Availability
+historical,2025-09-19,207.98,Metro Homes,Last Unit
+historical,2025-09-20,190.3,Garden District Properties,Available
+historical,2025-09-20,207.55,Metropolitan Living,Limited
+historical,2025-09-20,181.88,Parkside Residences,Good Availability
+historical,2025-09-20,204.25,City View Apartments,Available
+historical,2025-09-21,232.82,Uptown Apartments,Available
+historical,2025-09-21,266.01,Parkside Residences,Good Availability
+historical,2025-09-21,156.86,Harbor View Homes,Available
+historical,2025-09-21,190.81,Elite Properties,Available
+historical,2025-09-22,176.38,Premium Rentals,Good Availability
+historical,2025-09-22,136.17,Downtown Suites,Limited
+historical,2025-09-22,268.46,Parkside Residences,Good Availability
+historical,2025-09-22,211.01,LuxuryStays Inc,Good Availability
+historical,2025-09-23,173.93,Riverside Condos,Available
+historical,2025-09-23,137.89,LuxuryStays Inc,Last Unit
+historical,2025-09-23,261.94,Elite Properties,Last Unit
+historical,2025-09-23,194.31,Garden District Properties,Last Unit
+historical,2025-09-24,263.66,Metro Homes,Last Unit
+historical,2025-09-24,166.3,Urban Living Co,Available
+historical,2025-09-24,243.48,Metropolitan Living,Good Availability
+historical,2025-09-24,164.87,Uptown Apartments,Available
+historical,2025-09-25,174.47,Harbor View Homes,Limited
+historical,2025-09-25,251.79,Metropolitan Living,Good Availability
+historical,2025-09-25,203.59,Garden District Properties,Available
+historical,2025-09-25,167.05,Metro Homes,Limited
+historical,2025-09-26,144.43,Parkside Residences,Good Availability
+historical,2025-09-26,132.94,Harbor View Homes,Available
+historical,2025-09-26,121.49,Metropolitan Living,Good Availability
+historical,2025-09-26,219.14,Metro Homes,Limited
+historical,2025-09-27,223.17,Downtown Suites,Available
+historical,2025-09-27,139.9,Metropolitan Living,Good Availability
+historical,2025-09-27,281.74,Harbor View Homes,Good Availability
+historical,2025-09-27,160.42,Metro Homes,Last Unit
+historical,2025-09-28,157.35,Urban Living Co,Last Unit
+historical,2025-09-28,258.44,Downtown Suites,Last Unit
+historical,2025-09-28,185.71,Premium Rentals,Last Unit
+historical,2025-09-28,240.32,Uptown Apartments,Good Availability
+historical,2025-09-29,121.74,Parkside Residences,Last Unit
+historical,2025-09-29,191.27,Riverside Condos,Last Unit
+historical,2025-09-29,241.3,Garden District Properties,Last Unit
+historical,2025-09-29,231.14,Elite Properties,Available
+historical,2025-09-30,178.76,Metro Homes,Limited
+historical,2025-09-30,251.29,Elite Properties,Available
+historical,2025-09-30,249.53,Downtown Suites,Available
+historical,2025-09-30,155.6,City View Apartments,Last Unit
+historical,2025-10-01,191.79,Metropolitan Living,Limited
+historical,2025-10-01,235.41,Elite Properties,Good Availability
+historical,2025-10-01,237.18,City View Apartments,Last Unit
+historical,2025-10-01,155.06,Downtown Suites,Available
+historical,2025-10-02,224.71,City View Apartments,Good Availability
+historical,2025-10-02,126.76,Parkside Residences,Limited
+historical,2025-10-02,270.17,Urban Living Co,Limited
+historical,2025-10-02,286.45,Harbor View Homes,Limited
+historical,2025-10-03,167.35,Elite Properties,Available
+historical,2025-10-03,207.52,Metropolitan Living,Available
+historical,2025-10-03,240.28,Premium Rentals,Available
+historical,2025-10-03,170.0,Garden District Properties,Available
+historical,2025-10-04,237.1,City View Apartments,Limited
+historical,2025-10-04,172.05,Harbor View Homes,Last Unit
+historical,2025-10-04,260.28,LuxuryStays Inc,Good Availability
+historical,2025-10-04,232.64,Metro Homes,Last Unit
+historical,2025-10-05,230.06,Metropolitan Living,Good Availability
+historical,2025-10-05,172.38,Urban Living Co,Available
+historical,2025-10-05,170.03,Riverside Condos,Available
+historical,2025-10-05,244.81,Parkside Residences,Last Unit
+historical,2025-10-06,287.64,Uptown Apartments,Last Unit
+historical,2025-10-06,245.28,Urban Living Co,Last Unit
+historical,2025-10-06,141.25,Riverside Condos,Limited
+historical,2025-10-06,240.82,Garden District Properties,Last Unit
+historical,2025-10-07,255.97,Urban Living Co,Last Unit
+historical,2025-10-07,235.27,Metropolitan Living,Available
+historical,2025-10-07,215.25,Riverside Condos,Good Availability
+historical,2025-10-07,240.17,Premium Rentals,Available
+historical,2025-10-08,236.53,Uptown Apartments,Available
+historical,2025-10-08,155.92,City View Apartments,Good Availability
+historical,2025-10-08,185.12,Riverside Condos,Last Unit
+historical,2025-10-08,278.71,Metro Homes,Last Unit
+historical,2025-10-09,225.12,Parkside Residences,Last Unit
+historical,2025-10-09,299.52,Garden District Properties,Available
+historical,2025-10-09,159.0,City View Apartments,Available
+historical,2025-10-09,280.21,Harbor View Homes,Good Availability
+historical,2025-10-10,293.2,LuxuryStays Inc,Available
+historical,2025-10-10,231.44,Metropolitan Living,Good Availability
+historical,2025-10-10,136.81,Harbor View Homes,Limited
+historical,2025-10-10,260.97,Garden District Properties,Good Availability
+historical,2025-10-11,216.95,Elite Properties,Good Availability
+historical,2025-10-11,268.76,Urban Living Co,Good Availability
+historical,2025-10-11,199.12,Uptown Apartments,Available
+historical,2025-10-11,205.87,Parkside Residences,Good Availability
+historical,2025-10-12,221.34,Premium Rentals,Last Unit
+historical,2025-10-12,245.55,Downtown Suites,Last Unit
+historical,2025-10-12,167.0,Skyline Rentals,Good Availability
+historical,2025-10-12,133.24,Metropolitan Living,Last Unit
+historical,2025-10-13,124.56,LuxuryStays Inc,Good Availability
+historical,2025-10-13,187.51,Parkside Residences,Limited
+historical,2025-10-13,214.25,Urban Living Co,Limited
+historical,2025-10-13,197.74,Downtown Suites,Last Unit
+historical,2025-10-14,246.19,LuxuryStays Inc,Good Availability
+historical,2025-10-14,257.6,Harbor View Homes,Available
+historical,2025-10-14,172.3,Garden District Properties,Good Availability
+historical,2025-10-14,229.74,City View Apartments,Good Availability
