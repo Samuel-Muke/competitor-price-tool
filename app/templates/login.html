@@ -12,6 +12,8 @@
                 </div>
                 
                 <form method="post">
+                    {{ form.hidden_tag() }}  <!-- Add this line for CSRF token -->
+                    
                     <div class="mb-3">
                         <label class="form-label fw-semibold">Email Address</label>
                         <div class="input-group">

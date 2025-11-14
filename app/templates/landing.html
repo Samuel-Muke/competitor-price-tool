@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Competitor Price Aggregator -  Pricing & Forecasting</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #2c5530;
+            --secondary-color: #4a7c59;
+            --accent-color: #8fb996;
+            --text-dark: #1a1a1a;
+            --text-light: #666;
+            --background-light: #f8f9fa;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+        }
+        
+        .navbar {
+            padding: 0.75rem 0;
+            background: rgba(255, 255, 255, 0.95) !important;
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        }
+        
+        .hero-section {
+            position: relative;
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(135deg, rgba(44, 85, 48, 0.9) 0%, rgba(74, 124, 89, 0.8) 100%),
+                        url('https://images.unsplash.com/photo-1582268611958-ebfd161ef9cf?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80') center/cover no-repeat;
+            color: white;
+            overflow: hidden;
+            padding: 6rem 0 4rem;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 600px;
+        }
+        
+        .hero-title {
+            font-size: 2.7rem;
+            font-weight: 500;
+            line-height: 1.1;
+            margin-bottom: 1.25rem;
+        }
+        
+        .hero-subtitle {
+            font-size: 1.25rem;
+            font-weight: 400;
+            line-height: 1.6;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+        
+        .btn-hero {
+            background: white;
+            color: var(--primary-color);
+            padding: 0.875rem 2.25rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border: none;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        .btn-hero:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            color: var(--primary-color);
+        }
+        
+        .features-section {
+            padding: 4rem 0;
+            background: white;
+        }
+        
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 0.75rem;
+            color: var(--text-dark);
+        }
+        
+        .section-subtitle {
+            font-size: 1.1rem;
+            text-align: center;
+            color: var(--text-light);
+            margin-bottom: 2.5rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .feature-card {
+            background: white;
+            border: 1px solid rgba(0, 0, 0, 0.08);
+            border-radius: 15px;
+            padding: 2rem 1.75rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            height: 100%;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+        
+        .feature-icon {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 1.25rem;
+        }
+        
+        .feature-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 0.875rem;
+            color: var(--text-dark);
+        }
+        
+        .feature-description {
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+        
+        .stats-section {
+            padding: 3.5rem 0;
+            background: var(--background-light);
+        }
+        
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            display: block;
+        }
+        
+        .stat-label {
+            font-size: 1rem;
+            color: var(--text-light);
+            font-weight: 500;
+        }
+        
+        .cta-section {
+            padding: 4rem 0;
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: white;
+            text-align: center;
+        }
+        
+        .cta-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.875rem;
+        }
+        
+        .cta-subtitle {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+        
+        .btn-cta {
+            background: white;
+            color: var(--primary-color);
+            padding: 0.875rem 2.5rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border: none;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+        }
+        
+        .footer {
+            background: var(--text-dark);
+            color: white;
+            padding: 2.5rem 0 1.5rem;
+        }
+        
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .hero-section {
+                text-align: center;
+                padding: 5rem 0 3rem;
+                min-height: 85vh;
+            }
+            
+            .hero-content {
+                max-width: 100%;
+            }
+            
+            .features-section {
+                padding: 3rem 0;
+            }
+            
+            .stats-section {
+                padding: 3rem 0;
+            }
+            
+            .cta-section {
+                padding: 3rem 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="/" style="color: var(--primary-color);">
+                <i class="fas fa-chart-line me-2"></i>
+                PriceAggregator
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <div class="navbar-nav ms-auto">
+                    <!-- <a class="nav-link" href="/features" style="color: var(--text-dark);">Features</a>
+                    <a class="nav-link" href="/pricing" style="color: var(--text-dark);">Pricing</a>
+                    <a class="nav-link" href="/about" style="color: var(--text-dark);">About</a> -->
+                    <a class="btn btn-outline-primary ms-2" href="/login" style="border-color: var(--primary-color); color: var(--primary-color);">Login</a>
+                    <a class="btn ms-2" href="/register" style="background: var(--primary-color); color: white;">Get Started</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title">
+                    Welcome to the Competitor Price Aggregator and Forecasting Tool
+                </h1>
+                <p class="hero-subtitle">
+                    Track competitor prices, forecast demand, and maximize revenue with AI-powered market intelligence designed specifically for Nairobi's hospitality industry.
+                </p>
+                <a href="/register" class="btn-hero">
+                    GET STARTED →
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features-section">
+        <div class="container">
+            <h2 class="section-title">Powerful Features</h2>
+            <p class="section-subtitle">
+                Everything you need to stay competitive in Nairobi's dynamic hospitality industry
+            </p>
+            
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-search-dollar"></i>
+                        </div>
+                        <h3 class="feature-title">Competitor Price Tracking</h3>
+                        <p class="feature-description">
+                            Monitor prices from Airbnb, Booking.com, and local competitors across Nairobi neighborhoods including Westlands, Kilimani, and Karen.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="col-md-4">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <h3 class="feature-title">Price Forecasting</h3>
+                        <p class="feature-description">
+                            Predict demand and optimize pricing  on Nairobi market data and seasonal patterns.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="col-md-4">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-file-alt"></i>
+                        </div>
+                        <h3 class="feature-title">Market Intelligence Reports</h3>
+                        <p class="feature-description">
+                            Get detailed insights and actionable recommendations tailored to Nairobi's unique hospitality landscape and competitive environment.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats-section">
+        <div class="container">
+            <div class="row text-center">
+                <div class="col-md-3 mb-4">
+                    <span class="stat-number">90%</span>
+                    <span class="stat-label">Price Accuracy</span>
+                </div>
+                <div class="col-md-3 mb-4">
+                    <span class="stat-number">2,500+</span>
+                    <span class="stat-label">Nairobi Properties Tracked</span>
+                </div>
+                <div class="col-md-3 mb-4">
+                    <span class="stat-number">27%</span>
+                    <span class="stat-label">Average Revenue Increase</span>
+                </div>
+                <div class="col-md-3 mb-4">
+                    <span class="stat-number">24/7</span>
+                    <span class="stat-label">Market Monitoring</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <h2 class="cta-title">Ready to Optimize Your Pricing Strategy?</h2>
+            <p class="cta-subtitle">Join leading Nairobi hospitality providers using data to drive revenue growth</p>
+            <a href="/register" class="btn-cta">
+                Get Started
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container text-center">
+            <p>&copy; 2025 PriceAggregator. Designed for Kenya's hospitality industry.</p>
+            <p class="text-muted mt-2">
+                Tracking prices across Nairobi: Westlands, CBD, Kilimani, Karen, Lavington, and more
+            </p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Simple fade-in animation for elements
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe feature cards and stats
+        document.addEventListener('DOMContentLoaded', () => {
+            const elementsToAnimate = document.querySelectorAll('.feature-card, .stat-number');
+            elementsToAnimate.forEach(el => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(20px)';
+                el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                observer.observe(el);
+            });
+        });
+    </script>
+</body>
+</html>
