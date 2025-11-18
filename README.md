@@ -109,3 +109,4 @@ competitor_price_tool/
 ## License
 
 For educational use.# FinalPrototype_PriceAggregator
+# FinalPrototype_PriceAggregator
