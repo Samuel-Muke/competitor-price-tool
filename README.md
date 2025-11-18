@@ -110,3 +110,4 @@ competitor_price_tool/
 
 For educational use.# FinalPrototype_PriceAggregator
 # FinalPrototype_PriceAggregator
+# MyIs-project
